@@ -16,6 +16,13 @@ import com.example.kotlinstudy.ui.theme.KotlinStudyTheme
 class MainActivity : ComponentActivity() {
     val TAG : String = "kotlinTest"
     val variable : KotlinGrammar.Variable = KotlinGrammar.Variable()
+    val typeConversion : KotlinGrammar.TypeConversion = KotlinGrammar.TypeConversion()
+    val arrays : KotlinGrammar.Arrays = KotlinGrammar.Arrays()
+    val functions : KotlinGrammar.Functions = KotlinGrammar.Functions()
+    val conditional : KotlinGrammar.Conditional = KotlinGrammar.Conditional()
+    val loop : KotlinGrammar.Loop = KotlinGrammar.Loop()
+    val flowControl : KotlinGrammar.FlowControl = KotlinGrammar.FlowControl()
+    lateinit var classPerson : KotlinGrammar.ClassPerson
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +37,37 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        classPerson = KotlinGrammar.ClassPerson("Sangho", 971208)
     }
 
     override fun onResume() {
         super.onResume()
 
         Log.i(TAG, "var : " + variable.setVar(10))
-        Log.i(TAG, "val : " + variable.setVal(10))
+        Log.i(TAG, "conversion : " + typeConversion.returnExplicit(10))
+        arrays.printArrays()
+        Log.i(TAG, "add : " + functions.add() + ", minus : " + functions.minus())
+        conditionalTest()
+        loopTest()
+        flowControlTest()
+        classPerson.introduce()
+    }
+
+    private fun conditionalTest() {
+        conditional.setVariables(10, "I'm Test")
+        conditional.positiveA()
+        conditional.dataTypeB()
+        conditional.exampleWhen()
+    }
+
+    private fun loopTest() {
+        loop.functionWhile()
+        loop.functionFor()
+    }
+
+    private fun flowControlTest() {
+        flowControl.functionBreak()
+        flowControl.functionContinue()
     }
 }
 
